@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Performance Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('{{ url_for('static', filename='image1.webp') }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.9);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .form-container {
+            position: relative;
+            z-index: 2;
+            max-width: 450px;
+            margin: 80px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005f99;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <div class="form-container">
+        <img src="{{ url_for('static', filename='image2.jpg') }}" alt="School Image">
+        <form action="/predict" method="post">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+
+            <label for="race">Race/Ethnicity:</label>
+            <select id="race" name="race">
+                <option value="group A">Group A – Lower average scores</option>
+                <option value="group B">Group B – Slightly below average</option>
+                <option value="group C">Group C – Average performance</option>
+                <option value="group D">Group D – Above average scores</option>
+                <option value="group E">Group E – Highest average scores</option>
+            </select>
+
+
+            <label for="education">Parental Level of Education:</label>
+            <select id="education" name="education">
+                <option value="high school">High School</option>
+                <option value="some high school">Some High School</option>
+                <option value="associate's degree">Associate's Degree</option>
+                <option value="bachelor's degree">Bachelor's Degree</option>
+                <option value="master's degree">Master's Degree</option>
+            </select>
+
+            <label for="lunch">Lunch Type:</label>
+            <select id="lunch" name="lunch">
+                <option value="standard">Standard</option>
+                <option value="free/reduced">Free/Reduced</option>
+            </select>
+
+            <label for="prep">Test Preparation Course:</label>
+            <select id="prep" name="prep">
+                <option value="none">None</option>
+                <option value="completed">Completed</option>
+            </select>
+
+            <label for="reading_score">Reading Score:</label>
+            <input type="number" id="reading_score" name="reading_score" min="0" max="100" required>
+
+            <button type="submit">Predict Math Score</button>
+        </form>
+    </div>
+</body>
+</html>

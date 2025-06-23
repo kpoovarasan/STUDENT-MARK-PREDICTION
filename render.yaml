@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: student-mark-prediction
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    runtime: python
+    region: oregon  # Or use 'frankfurt' if closer to India
